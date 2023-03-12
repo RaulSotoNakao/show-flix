@@ -5,8 +5,6 @@ import { ref } from 'vue'
 let isDialogActive = ref(false)
 const changeStateDialog = () => {
   isDialogActive.value = !isDialogActive.value
-  console.log('yep')
-  console.log(isDialogActive)
 }
 </script>
 

@@ -6,11 +6,11 @@ import { defineProps, defineEmits } from 'vue'
 defineEmits(['goBackPage', 'goNextPage'])
 const props = defineProps({
   getPage: {
-    type: String,
+    type: Number,
     required: true
   },
   getTotalPages: {
-    type: String,
+    type: Number,
     required: true
   }
 })

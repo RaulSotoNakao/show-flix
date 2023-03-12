@@ -1,5 +1,4 @@
 <script>
-import IconFileFind from '~icons/mdi/file-find'
 import Dialog from '../general/Dialog.vue'
 export default {
   components: {
@@ -14,16 +13,8 @@ export default {
     menu() {
       return [
         {
-          text: this.$t('pagesGettingStartedNav'),
-          route: { name: 'getting-started' }
-        },
-        {
-          text: this.$t('pagesGettingStartedNav'),
-          route: { name: 'getting-started' }
-        },
-        {
-          text: this.$t('pagesGettingStartedNav'),
-          route: { name: 'getting-started' }
+          text: this.$t('home.tvlist'),
+          route: { name: 'home' }
         }
       ]
     }
@@ -45,10 +36,12 @@ export default {
       >
         <ul class="flex items-center space-x-8">
           <li v-for="(item, i) in menu" :key="i">
-            <button class="border hover:border-gray-500 font-bold py-2 px-4 rounded-full" size="xs">
+            <button
+              @click="() => $router.replace(item.route)"
+              class="border hover:border-gray-500 font-bold py-2 px-4 rounded-full"
+              size="xs"
+            >
               {{ item.text }}
-
-              <IconFileFind />
             </button>
           </li>
         </ul>

@@ -1,14 +1,17 @@
 <script setup>
 import iconView from '~icons/mdi/eye-outline'
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
+
+defineEmits(['showMore'])
+
 const props = defineProps({
   title: {
     type: String,
     default: undefined
   },
   stars: {
-    type: String,
-    default: undefined
+    type: Number,
+    default: 0
   },
   date: {
     type: String,
@@ -31,6 +34,7 @@ const props = defineProps({
         <button
           class="hidden group-hover:block border bg-white hover:border-blue-500 font-bold py-2 px-4 rounded-full"
           size="xs"
+          @click="() => $emit('showMore')"
         >
           <iconView class="text-blue-500" />
         </button>

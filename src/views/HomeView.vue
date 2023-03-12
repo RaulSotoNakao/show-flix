@@ -1,10 +1,10 @@
 <script setup>
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, toRaw } from 'vue'
 import Card from '../components/general/Card.vue'
 import Pagination from '../components/general/Pagination.vue'
 import { useTvshowsStore } from '../stores/tvshows'
-import IconLeft from '~icons/mdi/chevron-left'
-import IconRight from '~icons/mdi/chevron-right'
+import { useRouter } from 'vue-router'
+
 const store = useTvshowsStore()
 const getTvShowList = computed(() => {
   return store.getTvShowList
@@ -19,13 +19,20 @@ const getTotalPages = computed(() => {
 
 // lifecycle
 onMounted(() => {
-  store.fetchTvShowList()
+  store.fetchTvShowList(getPage.value)
 })
 const goBackPage = () => {
   store.fetchTvShowList(getPage.value - 1)
 }
 const goNextPage = () => {
   store.fetchTvShowList(getPage.value + 1)
+}
+
+const router = useRouter()
+
+const showMore = (selectedTvShow) => {
+  store.setSelectedTvShow(selectedTvShow)
+  router.replace({ path: '/detail/'+selectedTvShow.id })
 }
 </script>
 
@@ -49,6 +56,7 @@ const goNextPage = () => {
         :urlImg="
           tvshow.backdrop_path ? `https://image.tmdb.org/t/p/original${tvshow.backdrop_path}` : ''
         "
+        @showMore="() => showMore(tvshow)"
       />
     </section>
     <section class="flex flex-col items-center py-5">

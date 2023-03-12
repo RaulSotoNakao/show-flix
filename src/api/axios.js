@@ -7,7 +7,6 @@ const axios = axiosBase.create({
     api_key: ''
   }
 })
-console.log(import.meta.env)
 axios.defaults.params.api_key = import.meta.env['VITE_TOKEN']
 
 export default axios

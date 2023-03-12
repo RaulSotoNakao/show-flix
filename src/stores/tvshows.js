@@ -1,4 +1,3 @@
-import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import moviedbapi from '../api/moviedbapi'
 
@@ -6,11 +5,19 @@ export const useTvshowsStore = defineStore('tvshows', {
   state: () => ({
     tvShowList: [],
     page: 1,
-    total_pages: 0
+    total_pages: 0,
+    selectedTvShow: {},
+    tvShowData: {}
   }),
   getters: {
     getTvShowList(state) {
       return state.tvShowList
+    },
+    getSelectedTvShow(state) {
+      return state.selectedTvShow
+    },
+    getTvShowData(state) {
+      return state.tvShowData
     },
     getPage(state) {
       return state.page
@@ -32,6 +39,22 @@ export const useTvshowsStore = defineStore('tvshows', {
           this.tvShowList = []
           console.error(err)
         })
+    },
+    fetchTvShowData(tvshowid) {
+      return moviedbapi.tvShow
+        .getById({ tvshowid })
+        .then((res) => {
+          this.tvShowData = res.data
+        })
+        .catch((err) => {
+          this.tvShowData = {}
+          console.error(err)
+        })
+    },
+    setSelectedTvShow(selectedTvShow) {
+      this.selectedTvShow = selectedTvShow
+
+      return Promise.resolve(this.selectedTvShow)
     }
   }
 })
