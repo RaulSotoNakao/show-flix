@@ -4,7 +4,7 @@
   "description": "An webapp to view tv shows of an api",
   "repository": {
     "type": "git",
-    "url": "git://github.com/RaulSotoNakao/my-portfolio"
+    "url": "git://github.com/RaulSotoNakao/show-flix"
   },
   "author": "rsoto",
   "private": true,
