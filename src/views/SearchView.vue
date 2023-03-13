@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, computed, onBeforeUnmount } from 'vue'
+import { onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import Card from '../components/general/Card.vue'
 import Pagination from '../components/general/Pagination.vue'
 import { useTvshowsStore } from '../stores/tvshows'
@@ -16,19 +16,26 @@ const getPage = computed(() => {
 const getTotalPages = computed(() => {
   return store.getTotalPages
 })
+const getSearchQuery = computed(() => {
+  return store.getSearchQuery
+})
 
 // lifecycle
 onMounted(() => {
-  store.fetchTvShowList(getPage.value)
+  store.fetchSearchTvShowList(getSearchQuery.value, getPage.value)
 })
 onBeforeUnmount(() => {
   store.setDefaultPagination()
 })
+watch(getSearchQuery, async (query) => {
+  store.fetchSearchTvShowList(query, getPage.value)
+})
+
 const goBackPage = () => {
-  store.fetchTvShowList(getPage.value - 1)
+  store.fetchSearchTvShowList(getSearchQuery.value, getPage.value - 1)
 }
 const goNextPage = () => {
-  store.fetchTvShowList(getPage.value + 1)
+  store.fetchSearchTvShowList(getSearchQuery.value, getPage.value + 1)
 }
 
 const router = useRouter()

@@ -1,8 +1,10 @@
 <script>
 import Dialog from '../general/Dialog.vue'
+import SearchInput from '../form/SearchInput.vue'
 export default {
   components: {
-    Dialog
+    Dialog,
+    SearchInput
   },
   data() {
     return {
@@ -30,6 +32,8 @@ export default {
     </div>
 
     <div class="relative hidden lg:flex items-center ml-auto">
+      <SearchInput />
+
       <nav
         class="text-sm leading-6 font-semibold text-gray-600 dark:text-gray-300"
         role="navigation"
@@ -46,7 +50,18 @@ export default {
           </li>
         </ul>
       </nav>
-      <div class="flex border-l ml-6 pl-6 border-gray-900/10 dark:border-gray-50/[0.2]"></div>
+      <div class="flex border-l ml-6 pl-6 border-gray-900/10 dark:border-gray-50/[0.2]">
+        <select
+          id="countries"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option selected>Choose a country</option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
+      </div>
     </div>
     <Dialog v-slot="slotProps">
       <div class="w-screen">

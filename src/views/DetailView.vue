@@ -30,14 +30,14 @@ let urlImg = computed(() => {
         alt="imgNotFound"
       />
       <div class="text-center rounded-b-lg cursor-pointer flex justify-center">
-        <p class="px-3 py-5 hover:bg-blue-500 hover:text-white w-4/12 rounded-b">
-          Average {{ getTvShowData.vote_average }}
+        <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
+          <div>Average</div> {{ getTvShowData.vote_average }}
         </p>
-        <p class="px-3 py-5 hover:bg-blue-500 hover:text-white w-4/12 rounded-b">
-          Votes {{ getTvShowData.vote_count }}
+        <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
+          <div>Votes</div> {{ getTvShowData.vote_count }}
         </p>
-        <p class="px-3 py-5 hover:bg-blue-500 hover:text-white w-4/12 rounded-b">
-          Popularity {{ getTvShowData.popularity }}
+        <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
+          <div>Popularity</div> {{ getTvShowData.popularity }}
         </p>
       </div>
     </div>
@@ -45,22 +45,22 @@ let urlImg = computed(() => {
       <h1 class="text-6xl text-center pb-6">{{ getTvShowData.name }}</h1>
       <p class="text-lg pb-6 text-justify">{{ getTvShowData.overview }}</p>
 
-      <div class="flex justify-center">
-        <p class="px-3 py-5 border-b border-t rounded-lg hover:shadow-lg w-4/12 rounded-b">
+      <div class="flex justify-center text-center">
+        <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg w-4/12 rounded-b">
          <div> Date:</div> {{ getTvShowData.first_air_date }}
         </p>
-        <p class="px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
+        <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
           <div> Seasons:</div> {{ getTvShowData.number_of_seasons }}
         </p>
-        <p class="px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
+        <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
          <div> Episodes: </div>{{ getTvShowData.number_of_episodes }}
         </p>
       </div>
     </div>
   </div>
   <div class="flex flex-wrap justify-start py-5 md:py-10 px-2 md:px-20">
-    <div v-for="season in getTvShowData.seasons" class="px-2 w-40">
-      <p>{{ season.name }}</p>
+    <div v-for="season in getTvShowData.seasons" class="px-2 w-40 hover:translate-y-5 transition ">
+      <p class="text-center pb-2 overline">{{ season.name }}</p>
       <img
         :src="`${baseUrlImdb}${season.poster_path}`"
         class="w-full overflow-hidden bg-cover bg-no-repeat rounded-t-lg"
