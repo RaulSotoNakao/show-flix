@@ -25,7 +25,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="bg-white shadow-lg hover:shadow-gray-500 font-bold rounded-lg w-60 my-2 mx-2">
+  <div class="bg-white shadow-lg hover:shadow-gray-500 font-bold rounded-lg w-65 my-2 mx-2">
     <div class="group relative max-w-xs overflow-hidden bg-cover bg-no-repeat">
       <img :src="urlImg" class="h-60 w-full rounded" alt="imgNotFound" />
       <div

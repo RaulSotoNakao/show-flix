@@ -2,3 +2,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.overflow-y-show {
+  overflow-y: scroll;
+  direction: ltr !important;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+/* the thin blue line */
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 45%,
+    #485dfc 45%,
+    #1a1165 55%,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(59 130 246);
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px rgb(59 130 246);
+  -moz-box-shadow: 0px 0px 10px rgb(59 130 246);
+  box-shadow: 0px 0px 10px rgb(59 130 246);
+}
+/* for firefox scrollbar has only two properties scrollbar-color scrollbar-width*/
+html {
+  scrollbar-color: rgb(59 130 246) #8ea5b5;
+  scrollbar-width: thin;
+}

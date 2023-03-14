@@ -1,10 +1,14 @@
 <script setup>
+import { defineProps, defineEmits } from 'vue'
 import IconMenu from '~icons/mdi/menu'
 import { ref } from 'vue'
+defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 let isDialogActive = ref(false)
 const changeStateDialog = () => {
   isDialogActive.value = !isDialogActive.value
+  emit('update:modelValue', isDialogActive)
 }
 </script>
 
@@ -21,7 +25,7 @@ const changeStateDialog = () => {
   <!-- Modal -->
   <div
     v-show="isDialogActive"
-    class="fixed top-0 left-0 z-50 w-full h-full bg-gray-800 bg-opacity-50 flex items-center justify-center"
+    class="fixed top-0 left-0 z-50 w-full h-full bg-gray-800 bg-opacity-50 flex items-start justify-center"
   >
     <div class="bg-white rounded-md">
       <slot :changeStateDialog="changeStateDialog"></slot>
