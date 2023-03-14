@@ -3,19 +3,14 @@ import { onMounted, onBeforeUnmount, computed, watch } from 'vue'
 import Card from '../components/general/Card.vue'
 import Pagination from '../components/general/Pagination.vue'
 import { useTvshowsStore } from '../stores/tvshows'
-import { useRouter } from 'vue-router'
+import { useTvShow } from '../composables/useTvShow'
+import { usePagination } from '../composables/usePagination'
+
+const { getTvShowList, showMore } = useTvShow()
+const { getPage, getTotalPages } = usePagination('fetchSearchTvShowList')
 
 const store = useTvshowsStore()
-const getTvShowList = computed(() => {
-  return store.getTvShowList
-})
 
-const getPage = computed(() => {
-  return store.getPage
-})
-const getTotalPages = computed(() => {
-  return store.getTotalPages
-})
 const getSearchQuery = computed(() => {
   return store.getSearchQuery
 })
@@ -24,9 +19,7 @@ const getSearchQuery = computed(() => {
 onMounted(() => {
   store.fetchSearchTvShowList(getSearchQuery.value, getPage.value)
 })
-onBeforeUnmount(() => {
-  store.setDefaultPagination()
-})
+
 watch(getSearchQuery, async (query) => {
   store.fetchSearchTvShowList(query, getPage.value)
 })
@@ -36,13 +29,6 @@ const goBackPage = () => {
 }
 const goNextPage = () => {
   store.fetchSearchTvShowList(getSearchQuery.value, getPage.value + 1)
-}
-
-const router = useRouter()
-
-const showMore = (selectedTvShow) => {
-  store.setSelectedTvShow(selectedTvShow)
-  router.replace({ path: '/detail/' + selectedTvShow.id })
 }
 </script>
 

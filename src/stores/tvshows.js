@@ -44,6 +44,19 @@ export const useTvshowsStore = defineStore('tvshows', {
           console.error(err)
         })
     },
+    fetchTopTvShowList(page = 1) {
+      return moviedbapi.tvShow
+        .getTop({ page })
+        .then((res) => {
+          this.tvShowList = res.data.results
+          this.page = res.data.page
+          this.total_pages = res.data.total_pages
+        })
+        .catch((err) => {
+          this.tvShowList = []
+          console.error(err)
+        })
+    },
     fetchSearchTvShowList(query, page) {
       return moviedbapi.tvShow
         .search({ query, page })

@@ -17,7 +17,12 @@ export default {
         {
           text: this.$t('home.tvlist'),
           route: { name: 'home' }
+        },
+        {
+          text: this.$t('home.tvtop'),
+          route: { name: 'top' }
         }
+
       ]
     }
   },

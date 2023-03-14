@@ -7,13 +7,13 @@ import { useTvShow } from '../composables/useTvShow'
 import { usePagination } from '../composables/usePagination'
 
 const { getTvShowList, showMore } = useTvShow()
-const { getPage, getTotalPages, goBackPage, goNextPage } = usePagination('fetchTvShowList')
+const { getPage, getTotalPages, goBackPage, goNextPage } = usePagination('fetchTopTvShowList')
 
 const store = useTvshowsStore()
 
 // lifecycle
 onMounted(() => {
-  store.fetchTvShowList(getPage.value)
+  store.fetchTopTvShowList(getPage.value)
 })
 </script>
 
