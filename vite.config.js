@@ -6,6 +6,7 @@ import Icons from 'unplugin-icons/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/show-flix/',
   plugins: [
     vue(),
     Icons({
