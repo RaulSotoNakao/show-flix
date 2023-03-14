@@ -1,11 +1,14 @@
 import { createI18n } from 'vue-i18n'
+import enTra from './en_tra.json'
+import esTra from './es_tra.json'
+import caTra from './ca_tra.json'
 
 const i18n = createI18n({
   locale: 'es',
   messages: {
-    en: { test: 'eng', "pagesGettingStartedNav": "Nav eng" },
-    es: { test: 'esp', "pagesGettingStartedNav": "Nav esp" },
-    ca: { test: 'cat', "pagesGettingStartedNav": "Nav cat" }
+    en: enTra,
+    es: esTra,
+    ca: caTra
   }
 })
 

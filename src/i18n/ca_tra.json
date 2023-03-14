@@ -1,0 +1,16 @@
+{
+  "home.tvlist": "Sèries populars",
+  "home.tvtop": "Sèries TOP",
+  "footer.text": " Fet amb vue3, Tailwind i amb molt ",
+  "search.text": "Buscar",
+  "detail.average": "Mitjana",
+  "detail.votes": "Vots",
+  "detail.popularity": "Popularitat",
+  "detail.date": "Data",
+  "detail.seasons": "Temporades",
+  "detail.episodes": "Episodis",
+  "language.spain": "Español",
+  "language.english": "Ingles",
+  "language.catalan": "Catalan",
+  "detail.notavailabledata": "El text no està disponible en català."
+}

@@ -1,16 +1,22 @@
 <script setup>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, watchEffect } from 'vue'
 import { useRouter } from 'vue-router'
 import { useTvshowsStore } from '../stores/tvshows'
+
 const store = useTvshowsStore()
 
 const router = useRouter()
 
 // lifecycle
 onMounted(() => {
+  fechtData()
+})
+
+const fechtData = () => {
   const tvshowid = router.currentRoute.value.params.id
   store.fetchTvShowData(tvshowid)
-})
+
+}
 const getTvShowData = computed(() => {
   return store.getTvShowData
 })
@@ -19,6 +25,15 @@ let urlImg = computed(() => {
   const data = getTvShowData.value
   return data.backdrop_path ? `${baseUrlImdb}${data.backdrop_path}` : ''
 })
+
+watchEffect(() => {
+  if (store.getLang) {
+    fechtData();
+  }
+})
+
+
+
 </script>
 
 <template>
@@ -31,29 +46,29 @@ let urlImg = computed(() => {
       />
       <div class="text-center rounded-b-lg cursor-pointer flex justify-center">
         <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
-          <div>Average</div> {{ getTvShowData.vote_average }}
+          <div>{{ $t('detail.average') }}</div> {{ getTvShowData.vote_average }}
         </p>
         <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
-          <div>Votes</div> {{ getTvShowData.vote_count }}
+          <div>{{ $t('detail.votes') }}</div> {{ getTvShowData.vote_count }}
         </p>
         <p class="px-3 py-5 hover:bg-blue-500 transition hover:text-white w-4/12 rounded-b">
-          <div>Popularity</div> {{ getTvShowData.popularity }}
+          <div>{{ $t('detail.popularity') }}</div> {{ getTvShowData.popularity }}
         </p>
       </div>
     </div>
     <div class="md:w-6/12 md:px-2">
       <h1 class="text-6xl text-center pb-6">{{ getTvShowData.name }}</h1>
-      <p class="text-lg pb-6 text-justify">{{ getTvShowData.overview }}</p>
+      <p class="text-lg pb-6 text-justify">{{ getTvShowData.overview || $t('detail.notavailabledata')}}</p>
 
       <div class="flex justify-center text-center">
         <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg w-4/12 rounded-b">
-         <div> Date:</div> {{ getTvShowData.first_air_date }}
+         <div> {{ $t('detail.date') }}</div> {{ getTvShowData.first_air_date }}
         </p>
         <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
-          <div> Seasons:</div> {{ getTvShowData.number_of_seasons }}
+          <div> {{ $t('detail.seasons') }}</div> {{ getTvShowData.number_of_seasons }}
         </p>
         <p class="transition px-3 py-5 border-b border-t rounded-lg hover:shadow-lg  w-4/12 rounded-b">
-         <div> Episodes: </div>{{ getTvShowData.number_of_episodes }}
+         <div> {{ $t('detail.episodes') }} </div>{{ getTvShowData.number_of_episodes }}
         </p>
       </div>
     </div>

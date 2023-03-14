@@ -17,7 +17,8 @@ const repositoryUrl = import.meta.env.VITE_REPOSITORY
           </a>
           <div class="flex flex-col md:flex-row space-x-2 items-center md:float-right">
             <span class="text-center md:text-right">
-              Made with vue3, Tailwind and <span class="text-red-500">❤</span>
+              {{ $t('footer.text') }}
+              <span class="text-red-500">❤</span>
             </span>
           </div>
         </div>

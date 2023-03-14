@@ -1,0 +1,16 @@
+{
+  "home.tvlist": "Series populares",
+  "home.tvtop": "Series TOP",
+  "footer.text": " Hecho con vue3, Tailwind y con mucho ",
+  "search.text": "Buscar",
+  "detail.average": "Media",
+  "detail.votes": "Votos",
+  "detail.popularity": "Popularidad",
+  "detail.date": "Fecha",
+  "detail.seasons": "Temporadas",
+  "detail.episodes": "Episodios",
+  "language.spain": "Español",
+  "language.english": "Ingles",
+  "language.catalan": "Catalan",
+  "detail.notavailabledata": "No se encuentra el texto en el idioma selecionado"
+}

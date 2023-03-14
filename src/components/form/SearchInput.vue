@@ -20,7 +20,7 @@ const search = () => {
       type="search"
       id="default-search"
       class="block py-2 pl-5 text-sm bg-gray-50 focus:bg-slate-700 transition focus:text-white"
-      placeholder="Search"
+      :placeholder="$t('search.text')"
       v-model="query"
     />
     <IconMovieSearchOutline class="cursor-pointer" @click="search" />

@@ -1,0 +1,13 @@
+{
+  "home.tvlist": "popular TV shows",
+  "home.tvtop": "top rated TV shows",
+  "footer.text": " Made with vue3, Tailwind and ",
+  "search.text": "Search",
+  "detail.average": "average",
+  "detail.votes": "Votes",
+  "detail.popularity": "Popularity",
+  "detail.date": "Date",
+  "detail.seasons": "Seasons",
+  "detail.episodes": "Episodes",
+  "detail.notavailabledata": "Text is not available in english"
+}

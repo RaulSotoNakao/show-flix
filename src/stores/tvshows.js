@@ -8,7 +8,8 @@ export const useTvshowsStore = defineStore('tvshows', {
     total_pages: 0,
     selectedTvShow: {},
     tvShowData: {},
-    searchQuery: ''
+    searchQuery: '',
+    lang: 'es'
   }),
   getters: {
     getTvShowList(state) {
@@ -28,9 +29,15 @@ export const useTvshowsStore = defineStore('tvshows', {
     },
     getTotalPages(state) {
       return state.total_pages
+    },
+    getLang(state) {
+      return state.lang
     }
   },
   actions: {
+    setLangStore(local) {
+      this.lang = local
+    },
     fetchTvShowList(page = 1) {
       return moviedbapi.tvShow
         .get({ page })
